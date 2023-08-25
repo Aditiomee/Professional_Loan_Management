@@ -1,5 +1,6 @@
 package com.loan.loanapp.service;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +20,30 @@ public class LoanRepaymentServiceImpl implements LoanRepaymentService {
 	LoanRepaymentRepository loanRepaymentRepo;
 
 	@Override
-	public LoanRepayment getLoanRepaymentById(Integer id) {
+	public LoanRepayment getLoanRepaymentById(Integer id) throws LoanRepaymentException {
 		// TODO Auto-generated method stub
-		return null;
-	}
+		Optional<LoanRepayment> repaymentOpt = this.loanRepaymentRepo.findById(id);
+		if(!repaymentOpt .isPresent())
+			throw new LoanRepaymentException("Repayment doesn't exist for id"+id);
+		return repaymentOpt.get();
+		}
 
 	@Override
 	public LoanRepayment addRepayment(LoanRepayment newRepayment) throws LoanRepaymentException {
 		// TODO Auto-generated method stub
-		Optional<LoanRepayment> repaymentOpt = this.loanRepaymentRepo.findById(newRepayment.getLoanRepaymentId());
-        if(repaymentOpt.isPresent())
-            throw new LoanRepaymentException("Repayment Done "+newRepayment.getRepaymentRecipt());
+		this.loanRepaymentRepo.findById(newRepayment.getLoanRepaymentId());
+//		Optional<LoanRepayment> repaymentOpt = this.loanRepaymentRepo.findById(newRepayment.getLoanRepaymentId());
+//        if(repaymentOpt.isPresent())
+//            throw new LoanRepaymentException("Repayment Done "+newRepayment.getRepaymentRecipt());
         return this.loanRepaymentRepo.save(newRepayment);
 	}
+
+	@Override
+	public Collection<LoanRepayment> getAllRepayments() {
+		// TODO Auto-generated method stub
+		return this.loanRepaymentRepo.findAll();
+	}
+	
+	
 
 }
