@@ -13,8 +13,8 @@ public interface DocumentService {
 
 	Document getDocumentById(Integer id)throws DocumentException;
 	
-	Document deleteDocument(Document document)throws DocumentException;
+	String deleteDocumentById(Integer id)throws DocumentException;
 
-	Collection<Document> getAllDocument();
+	Collection<Document> getAllDocuments();
 	
 }
