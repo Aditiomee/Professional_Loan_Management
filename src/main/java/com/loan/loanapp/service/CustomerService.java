@@ -2,16 +2,21 @@ package com.loan.loanapp.service;
 
 import java.util.Collection;
 
+
 import com.loan.loanapp.entity.Customer;
-import com.loan.loanapp.entity.Loan;
 import com.loan.loanapp.exception.CustomerException;
+import org.springframework.http.ResponseEntity;
+
+import com.loan.loanapp.dto.Login;
 
 public interface CustomerService {
 	
 	
 	Customer addCustomer(Customer newCustomer)throws CustomerException;
+
 	
 	String deleteCustomerById(Integer id)throws CustomerException;
+
 	
 	Customer updateCustomer(Customer newCustomer)throws CustomerException;
 	
@@ -19,6 +24,6 @@ public interface CustomerService {
 	
 	Collection<Customer> getAllCustomers();
 	
-	Collection<Loan> getAllLoans();
+    Boolean validateCustomer(Login loginDetailsDto) throws CustomerException;
 
 }
