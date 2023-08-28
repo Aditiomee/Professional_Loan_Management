@@ -18,6 +18,7 @@ public class LoanDisbursement {
 	public Double getLoanDisbursementAmount() {
 		return loanDisbursementAmount;
 	}
+	
 	@OneToMany
 	private List<LoanRepayment> loanRepayment = new ArrayList<LoanRepayment>();
 

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.loan.loanapp.exception.AddressException;
+
 import com.loan.loanapp.exception.AdminException;
 import com.loan.loanapp.exception.AppliedLoansException;
 import com.loan.loanapp.exception.BankException;
@@ -60,11 +60,6 @@ public class ControllerAdvice {
 	@ExceptionHandler(LoansException.class)
 	public ResponseEntity<String>LoansException(LoansException loansException){
 		return new ResponseEntity<String>(loansException.getMessage(),HttpStatus.BAD_REQUEST);
-	}
-	
-	@ExceptionHandler(AddressException.class)
-	public ResponseEntity<String>AddressException(AddressException addressException){
-		return new ResponseEntity<String>(addressException.getMessage(),HttpStatus.BAD_REQUEST);
 	}
 	
 	@ExceptionHandler(CollateralException.class)

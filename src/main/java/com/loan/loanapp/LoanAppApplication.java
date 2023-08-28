@@ -49,4 +49,5 @@ public class LoanAppApplication implements CommandLineRunner{
 		
 	}
 
-}
+} 
+ 

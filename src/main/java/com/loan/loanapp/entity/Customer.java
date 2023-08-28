@@ -17,7 +17,10 @@ public class Customer {
 	private String customerName;
 	private String customerEmail;
 	private String customerPassword;
+
 	private Long customerPhoneNo;
+	private String customerAddress;
+
 	private LocalDate customerDob;
 	private String customerNationality;
 	private String customerGender;
@@ -25,8 +28,8 @@ public class Customer {
 	private Integer workexperience;
 	private Double customerIncome;
 	private Integer customerCreditScore;
-	@OneToOne 
-	private Address address;
+
+	
 	
 	@OneToMany
 	private List<Loan> loans = new ArrayList<Loan>();
@@ -163,14 +166,6 @@ public class Customer {
 		this.customerAge = customerAge;
 	}
 
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
 	public List<Loan> getLoans() {
 		return loans;
 	}
@@ -202,9 +197,44 @@ public class Customer {
 	public void setCustomerCreditScore(Integer customerCreditScore) {
 		this.customerCreditScore = customerCreditScore;
 	}
+	
+
+	public String getCustomerAddress() {
+		return customerAddress;
+	}
+
+	public void setCustomerAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
+	}
+
+
+	public Customer(Integer customerId, String customerName, String customerEmail, String customerPassword,
+			Integer customerPhoneNo, String customerAddress, LocalDate customerDob, String customerNationality,
+			String customerGender, Integer customerAge, Integer workexperience, Double customerIncome,
+			Integer customerCreditScore, List<Loan> loans, List<Document> documents,
+			List<LoanRepayment> loanrepayment) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerEmail = customerEmail;
+		this.customerPassword = customerPassword;
+		this.customerPhoneNo = customerPhoneNo;
+		this.customerAddress = customerAddress;
+		this.customerDob = customerDob;
+		this.customerNationality = customerNationality;
+		this.customerGender = customerGender;
+		this.customerAge = customerAge;
+		this.workexperience = workexperience;
+		this.customerIncome = customerIncome;
+		this.customerCreditScore = customerCreditScore;
+		this.loans = loans;
+		this.documents = documents;
+		this.loanrepayment = loanrepayment;
+	}
+
 
 	
-	
+
 
 	
 	

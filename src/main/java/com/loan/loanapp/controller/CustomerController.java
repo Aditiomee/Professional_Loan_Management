@@ -1,11 +1,17 @@
 package com.loan.loanapp.controller;
 
+import java.util.Collection;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
@@ -13,19 +19,27 @@ import org.springframework.http.HttpStatus;
 import com.loan.loanapp.dao.CustomerRepository;
 import com.loan.loanapp.dto.Login;
 import com.loan.loanapp.entity.Customer;
+
+
 import com.loan.loanapp.exception.CustomerException;
 import com.loan.loanapp.service.CustomerService;
+import com.loan.loanapp.service.LoansService;
+
+
+
 
 @RestController
 public class CustomerController {
 	@Autowired 
 	CustomerService customerService;
+
 	@GetMapping("/")
 	public String getGreeting() {
-		return "welocome";
+		return "welccome to our page";
 		
 	}
     @PostMapping("/customer")
+
     public Customer addCustomer(@RequestBody Customer customer) throws CustomerException {
                     return this.customerService.addCustomer(customer);
     }
@@ -57,6 +71,45 @@ public class CustomerController {
   
    
     
+=======
+    public Customer addCustomer(@RequestBody Customer newCustomer) {
+                   
+                    return this.customerRepo.save(newCustomer);
+    }
+    
+    @PutMapping("/customer") 
+	public Customer updateCustomer(@RequestBody Customer newCustomer) throws CustomerException {
+		try {
+			return this.customerService.updateCustomer(newCustomer);
+		} catch (Exception e) {
+			throw e;
+		}
+		
+	}
+    
+    @DeleteMapping("/customer/{id}")
+	public String deleteProduct(@PathVariable Integer id) throws CustomerException {
+		return this.customerService.deleteCustomerById(id);
+		
+	}
+    
+    @GetMapping("/customer/{id}")
+	public Customer getProductById(@PathVariable("id") Integer id) throws CustomerException {
+		return this.customerService.getCustomerById(id);
+	}
+    
+    @GetMapping("/customers")
+	public Collection<Customer> getAllProducts() {
+		Collection<Customer> customerCollection = this.customerService.getAllCustomers();
+		return customerCollection;
+	}
+   
+    @GetMapping("/loans")
+   	public Collection<Loan> getAllLaons() {
+   		Collection<Loan> loanCollection = this.loansService.getAllLoans();
+   		return loanCollection;
+   	}
+
     
     
 
