@@ -11,5 +11,9 @@ public interface LoanRepaymentService {
 	LoanRepayment addRepayment(LoanRepayment newRepayment)throws LoanRepaymentException;
 
 	LoanRepayment getLoanRepaymentById(Integer id) throws LoanRepaymentException;
-
+  
+	
+	
 }
+
+
