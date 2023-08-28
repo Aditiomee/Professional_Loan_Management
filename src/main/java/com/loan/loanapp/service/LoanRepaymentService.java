@@ -7,5 +7,9 @@ import com.loan.loanapp.exception.LoanRepaymentException;
 public interface LoanRepaymentService {
 
 	LoanRepayment getLoanRepaymentById(Integer id) throws LoanRepaymentException;
-
+  
+	
+	
 }
+
+
