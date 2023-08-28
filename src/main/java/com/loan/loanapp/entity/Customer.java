@@ -17,7 +17,7 @@ public class Customer {
 	private String customerName;
 	private String customerEmail;
 	private String customerPassword;
-	private Integer customerPhoneNo;
+	private Long customerPhoneNo;
 	private LocalDate customerDob;
 	private String customerNationality;
 	private String customerGender;
@@ -41,7 +41,37 @@ public class Customer {
 	public Customer() {
 		super();
 	}
+	public Customer(Integer customerId, String customerName, String customerEmail, String customerPassword,
+			Long customerPhoneNo, LocalDate customerDob, String customerNationality, String customerGender,
+			Integer customerAge, Integer workexperience, Double customerIncome, Integer customerCreditScore,
+			Address address, List<Loan> loans, List<Document> documents, List<LoanRepayment> loanrepayment) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerEmail = customerEmail;
+		this.customerPassword = customerPassword;
+		this.customerPhoneNo = customerPhoneNo;
+		this.customerDob = customerDob;
+		this.customerNationality = customerNationality;
+		this.customerGender = customerGender;
+		this.customerAge = customerAge;
+		this.workexperience = workexperience;
+		this.customerIncome = customerIncome;
+		this.customerCreditScore = customerCreditScore;
+		this.address = address;
+		this.loans = loans;
+		this.documents = documents;
+		this.loanrepayment = loanrepayment;
+	}
 	
+	
+	public Customer(Integer customerId, String customerName, String customerEmail, String customerPassword) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerEmail = customerEmail;
+		this.customerPassword = customerPassword;
+	}
 	public Integer getWorkexperience() {
 		return workexperience;
 	}
@@ -93,11 +123,11 @@ public class Customer {
 		this.customerPassword = customerPassword;
 	}
 
-	public Integer getCustomerPhoneNo() {
+	public Long getCustomerPhoneNo() {
 		return customerPhoneNo;
 	}
 
-	public void setCustomerPhoneNo(Integer customerPhoneNo) {
+	public void setCustomerPhoneNo(Long customerPhoneNo) {
 		this.customerPhoneNo = customerPhoneNo;
 	}
 
@@ -173,28 +203,8 @@ public class Customer {
 		this.customerCreditScore = customerCreditScore;
 	}
 
-	public Customer(Integer customerId, String customerName, String customerEmail, String customerPassword,
-			Integer customerPhoneNo, LocalDate customerDob, String customerNationality, String customerGender,
-			Integer customerAge, Integer workexperience, Double customerIncome, Integer customerCreditScore,
-			Address address, List<Loan> loans, List<Document> documents, List<LoanRepayment> loanrepayment) {
-		super();
-		this.customerId = customerId;
-		this.customerName = customerName;
-		this.customerEmail = customerEmail;
-		this.customerPassword = customerPassword;
-		this.customerPhoneNo = customerPhoneNo;
-		this.customerDob = customerDob;
-		this.customerNationality = customerNationality;
-		this.customerGender = customerGender;
-		this.customerAge = customerAge;
-		this.workexperience = workexperience;
-		this.customerIncome = customerIncome;
-		this.customerCreditScore = customerCreditScore;
-		this.address = address;
-		this.loans = loans;
-		this.documents = documents;
-		this.loanrepayment = loanrepayment;
-	}
+	
+	
 
 	
 	
