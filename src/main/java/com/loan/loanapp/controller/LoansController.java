@@ -20,7 +20,7 @@ import com.loan.loanapp.service.LoansService;
 
 
 
-@Service
+@RestController
 public class LoansController {
 	@Autowired
 	LoansService loansService;
@@ -55,3 +55,5 @@ public class LoansController {
 		}
 
 }
+	
+

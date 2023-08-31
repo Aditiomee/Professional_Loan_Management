@@ -15,6 +15,6 @@ public interface DocumentService {
 	
 	String deleteDocumentById(Integer id)throws DocumentException;
 
-	Collection<Document> getAllDocument();
+	Collection<Document> getAllDocuments();
 	
 }
