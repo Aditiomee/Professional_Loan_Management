@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.14</version>
+		<version>2.3.1.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.loan</groupId>
@@ -48,6 +48,10 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -58,6 +62,8 @@
 		</dependency>
 
 	</dependencies>
+	
+	
 
 	<build>
 		<plugins>
@@ -67,5 +73,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	
 
 </project>

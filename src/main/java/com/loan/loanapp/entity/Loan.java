@@ -20,7 +20,7 @@ public class Loan {
 	private Integer loanTenture;
 	private Double loanEMI;
 	private String loanDescription;
-	private Boolean status;
+	private String status="Pending";
 	
 	
 	@OneToOne
@@ -111,18 +111,18 @@ public class Loan {
 		this.document = document;
 	}
 	
-	public Boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
 
 
 	public Loan(Integer loanId, String loanType, String loanName, Double loanAmount, Float loanIntrest,
-			Integer loanTenture, Double loanEMI, String loanDescription, Boolean status,
+			Integer loanTenture, Double loanEMI, String loanDescription, String status,
 			LoanDisbursement loanDisbursement, List<Document> document) {
 		super();
 		this.loanId = loanId;

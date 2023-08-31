@@ -19,10 +19,10 @@ import org.springframework.http.HttpStatus;
 import com.loan.loanapp.dao.CustomerRepository;
 import com.loan.loanapp.dto.Login;
 import com.loan.loanapp.entity.Customer;
-
-
+import com.loan.loanapp.entity.Loan;
 import com.loan.loanapp.exception.CustomerException;
 import com.loan.loanapp.service.CustomerService;
+import com.loan.loanapp.service.MailService;
 import com.loan.loanapp.service.LoansService;
 
 
@@ -32,6 +32,16 @@ import com.loan.loanapp.service.LoansService;
 public class CustomerController {
 	@Autowired 
 	CustomerService customerService;
+	
+	@Autowired
+	CustomerRepository customerRepo;
+	
+	@Autowired
+	MailService mailService;
+
+	@Autowired
+	LoansService loansService;
+	
 
 	@GetMapping("/")
 	public String getGreeting() {
@@ -39,10 +49,13 @@ public class CustomerController {
 		
 	}
     @PostMapping("/customer")
-
-    public Customer addCustomer(@RequestBody Customer customer) throws CustomerException {
-                    return this.customerService.addCustomer(customer);
+    public Customer addCustomer(@RequestBody Customer customer) {
+    	String mail = customer.getCustomerEmail();
+    	mailService.sendMail(mail, "You have Successfully registered","Dear "+customer.getCustomerName()+"/nYou have Successfully registered ." );
+    	return this.customerRepo.save(customer);
     }
+
+    
     
     
     //Customer login
@@ -71,11 +84,7 @@ public class CustomerController {
   
    
     
-=======
-    public Customer addCustomer(@RequestBody Customer newCustomer) {
-                   
-                    return this.customerRepo.save(newCustomer);
-    }
+
     
     @PutMapping("/customer") 
 	public Customer updateCustomer(@RequestBody Customer newCustomer) throws CustomerException {

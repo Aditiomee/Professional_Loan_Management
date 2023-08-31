@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+
+import com.loan.loanapp.service.MailService;
 
 import com.loan.loanapp.dao.CustomerRepository;
-import com.loan.loanapp.entity.Address;
 import com.loan.loanapp.entity.Customer;
 import com.loan.loanapp.entity.Document;
 import com.loan.loanapp.entity.Loan;
@@ -21,6 +24,14 @@ public class LoanAppApplication implements CommandLineRunner{
 
 	public static void main(String[] args) {
 		SpringApplication.run(LoanAppApplication.class, args);
+	}
+	
+	@Autowired
+	MailService mailService;
+	
+	@EventListener(ApplicationReadyEvent.class)
+	public void sendEmail(){
+		mailService.sendMail("Aditiomee@gmail.com", "hello", "hello");
 	}
 	@Autowired
 	CustomerRepository customerRepo;
