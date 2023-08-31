@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.loan.loanapp.dao.BankRepository;
 import com.loan.loanapp.entity.Loan;
+import com.loan.loanapp.entity.LoanDisbursement;
 
 @Service
 public class BankServiceImpl implements BankService {
@@ -19,5 +20,25 @@ public class BankServiceImpl implements BankService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public LoanDisbursement disburseLoanById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<LoanDisbursement> getAllDisbursedLoans() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<LoanDisbursement> getLoanDisbursementById() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

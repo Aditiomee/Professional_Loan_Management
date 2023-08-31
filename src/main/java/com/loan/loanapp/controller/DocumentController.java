@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.loan.loanapp.dao.DocumentsRepository;
 import com.loan.loanapp.entity.Customer;
 import com.loan.loanapp.entity.Document;
+import com.loan.loanapp.exception.CustomerException;
 import com.loan.loanapp.exception.DocumentException;
 import com.loan.loanapp.service.DocumentService;
  
@@ -19,13 +20,12 @@ import com.loan.loanapp.service.DocumentService;
 public class DocumentController {
      @Autowired
      DocumentService documentService;
-     @Autowired
-     DocumentsRepository documentRepo;
+     
     
-     @PostMapping("/document")
-    public Document addDocument(@RequestBody Document newDocument) {
+     @PostMapping("/customer/document/{customerId}")
+    public Customer addDocument(@RequestBody Document newDocument, @PathVariable Integer customerId) throws CustomerException  {
                  
-                    return this.documentRepo.save(newDocument);
+                    return this.documentService.addDocument(newDocument, customerId);
     }
   
     @DeleteMapping("/document/{id}")

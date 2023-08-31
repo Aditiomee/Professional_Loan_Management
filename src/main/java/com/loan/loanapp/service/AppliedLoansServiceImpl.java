@@ -1,5 +1,7 @@
 package com.loan.loanapp.service;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +28,13 @@ public class AppliedLoansServiceImpl implements AppliedLoansService {
 	}
 
 	@Override
-	public AppliedLoans approveAppliedLoansById(Integer id) throws AppliedLoansException {
+	public Collection<AppliedLoans> getAllAppliedLoans() throws AppliedLoansException {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+
+	
 
 }

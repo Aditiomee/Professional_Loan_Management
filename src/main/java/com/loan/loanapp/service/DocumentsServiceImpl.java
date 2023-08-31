@@ -6,8 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.loan.loanapp.dao.CustomerRepository;
 import com.loan.loanapp.dao.DocumentsRepository;
+import com.loan.loanapp.entity.Customer;
 import com.loan.loanapp.entity.Document;
+import com.loan.loanapp.exception.CustomerException;
 import com.loan.loanapp.exception.DocumentException;
 
 
@@ -17,13 +20,28 @@ public class DocumentsServiceImpl implements DocumentService {
 	@Autowired
 	DocumentsRepository documentsRepo;
 	
+	@Autowired
+	CustomerRepository customerRepo;
+	
+//	@Override
+//    public Document addDocument(Document newDocument) throws DocumentException {
+//         Optional<Document> documentOpt = this.documentsRepo.findById(newDocument.getDocumentId());
+//       if(documentOpt.isPresent())
+//           throw new DocumentException("Aadhar already exist "+newDocument.getDocumentType());
+//       return this.documentsRepo.save(newDocument);
+//    }
+	
 	@Override
-    public Document addDocument(Document newDocument) throws DocumentException {
-         Optional<Document> documentOpt = this.documentsRepo.findById(newDocument.getDocumentId());
-       if(documentOpt.isPresent())
-           throw new DocumentException("Document already exist "+newDocument.getDocumentName());
-       return this.documentsRepo.save(newDocument);
-    }
+	public Customer addDocument(Document newDocument, Integer customerId) throws CustomerException {
+		Optional<Customer> customerOpt = this.customerRepo.findById(customerId);
+		if(!customerOpt.isPresent())
+			throw new CustomerException("Customer not present for this id: "+customerId);
+		newDocument=this.documentsRepo.save(newDocument);
+		Customer customer = customerOpt.get();
+		customer.getDocuments().add(newDocument);
+		return this.customerRepo.save(customer);
+	}
+
 
 	 @Override
      public Document getDocumentById(Integer id) throws DocumentException {
@@ -53,6 +71,7 @@ public class DocumentsServiceImpl implements DocumentService {
           return this.documentsRepo.findAll();
      }
 
+	
 	 
 
 	

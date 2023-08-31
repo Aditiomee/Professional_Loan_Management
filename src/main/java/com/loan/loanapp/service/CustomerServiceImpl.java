@@ -61,14 +61,14 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerOpt.get();
 	}
 
-	@Override
-	public Collection<Customer> getAllCustomers() {
-		return this.customerRepo.findAll();
-	}
-
-	@Override
-	public Collection<Loan> getAllLoans() {
-		return this.loansRepo.findAll();
-	}
+//	@Override
+//	public Collection<Customer> getAllCustomers() {
+//		return this.customerRepo.findAll();
+//	}
+//
+//	@Override
+//	public Collection<Loan> getAllLoans() {
+//		return this.loansRepo.findAll();
+//	}
 	
 }

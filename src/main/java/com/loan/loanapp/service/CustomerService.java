@@ -17,8 +17,8 @@ public interface CustomerService {
 	
 	Customer getCustomerById(Integer id)throws CustomerException;
 	
-	Collection<Customer> getAllCustomers();
+	//Collection<Customer> getAllCustomers();
 	
-	Collection<Loan> getAllLoans();
+	//Collection<Loan> getAllLoans();
 
 }

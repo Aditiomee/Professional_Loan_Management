@@ -1,7 +1,7 @@
 package com.loan.loanapp.controller;
 
-import java.util.Collection;
-import java.util.Optional;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,8 +30,6 @@ public class CustomerController {
 	@Autowired
 	LoansService loansService;
 	
-	@Autowired
-	CustomerRepository customerRepo;
 	
 	
 	@GetMapping("/")
@@ -40,9 +38,9 @@ public class CustomerController {
 		
 	}
     @PostMapping("/customer")
-    public Customer addCustomer(@RequestBody Customer newCustomer) {
+    public Customer addCustomer(@RequestBody Customer newCustomer) throws CustomerException {
                    
-                    return this.customerRepo.save(newCustomer);
+                    return this.customerService.addCustomer(newCustomer);
     }
     
     @PutMapping("/customer") 
@@ -66,17 +64,17 @@ public class CustomerController {
 		return this.customerService.getCustomerById(id);
 	}
     
-    @GetMapping("/customers")
-	public Collection<Customer> getAllProducts() {
-		Collection<Customer> customerCollection = this.customerService.getAllCustomers();
-		return customerCollection;
-	}
-   
-    @GetMapping("/loans")
-   	public Collection<Loan> getAllLaons() {
-   		Collection<Loan> loanCollection = this.loansService.getAllLoans();
-   		return loanCollection;
-   	}
+//    @GetMapping("/customers")
+//	public Collection<Customer> getAllProducts() {
+//		Collection<Customer> customerCollection = this.customerService.getAllCustomers();
+//		return customerCollection;
+//	}
+//   
+//    @GetMapping("/loans")
+//   	public Collection<Loan> getAllLaons() {
+//   		Collection<Loan> loanCollection = this.loansService.getAllLoans();
+//   		return loanCollection;
+//   	}
     
     
 
